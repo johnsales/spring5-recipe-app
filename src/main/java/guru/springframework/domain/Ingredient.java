@@ -1,6 +1,7 @@
 package guru.springframework.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
  * @author jmsantiago on 09/04/2020
  */
 @Data
+@EqualsAndHashCode(exclude = {"recipe"})//necessary when bidirectional
 @Entity
 public class Ingredient {
 
