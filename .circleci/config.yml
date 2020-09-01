@@ -25,6 +25,8 @@ jobs:
       MAVEN_OPTS: -Xmx3200m
 
     steps:
+      - codecov/upload:
+            file: { { coverage_report_filepath } }
       - checkout
 
       # Download and cache dependencies
