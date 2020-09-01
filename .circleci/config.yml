@@ -4,9 +4,6 @@
 #
 version: 2
 
-orbs:
-  codecov: codecov/codecov@1.0.2
-
 jobs:
   build:
     docker:
@@ -25,8 +22,6 @@ jobs:
       MAVEN_OPTS: -Xmx3200m
 
     steps:
-      - codecov/upload:
-            file: { { coverage_report_filepath } }
       - checkout
 
       # Download and cache dependencies
@@ -44,7 +39,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests! and gen code coverage
-      #- run: mvn integration-test cobertura:cobertura
+      - run: mvn integration-test cobertura:cobertura
 
       - store_test_results:
           path: target/surefire-reports
